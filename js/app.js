@@ -413,3 +413,25 @@ document.addEventListener("DOMContentLoaded", () => {
     darkModeToggle.checked = true;
   }
 });
+
+//aqui nuevo codigo
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ... (código existente) ...
+
+  // Conectar el nuevo filtro
+  document.getElementById("color-filter").addEventListener("change", (e) => {
+    filterByColor(e.target.value);
+  });
+
+  // ... (resto del código de inicialización) ...
+});
+function getPowerClass(poder) {
+  if (!poder) return "poder-judicial";
+  if (poder.includes("Poder Judicial")) return "poder-judicial";
+  if (poder.includes("Poder Ejecutivo")) return "poder-ejecutivo";
+  if (poder.includes("Poder Legislativo")) return "poder-legislativo";
+  if (poder.includes("En Funciones")) return "en-funciones";
+  if (poder.includes(",")) return "multiple-poderes";
+  return "poder-judicial";
+}

@@ -167,6 +167,17 @@
           </label>
         </div>
       </div>
+      <div class="filter-section">
+        <label for="color-filter">Filtrar por poder postulante:</label>
+        <select id="color-filter">
+          <option value="all">Todos los poderes</option>
+          <option value="poder-judicial">Poder Judicial</option>
+          <option value="poder-ejecutivo">Poder Ejecutivo</option>
+          <option value="poder-legislativo">Poder Legislativo</option>
+          <option value="en-funciones">En Funciones</option>
+          <option value="multiple-poderes">Múltiples Poderes</option>
+        </select>
+      </div>
 
       <div class="candidates-grid" id="candidates-container">
         <!-- Las tarjetas de candidatos se generarán aquí con JavaScript -->
@@ -213,5 +224,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="./js/data.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/seleccion.js"></script>
   </body>
 </html>
