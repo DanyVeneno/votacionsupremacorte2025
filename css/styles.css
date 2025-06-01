@@ -283,7 +283,7 @@ input:checked + .slider:before {
   margin: 0 auto 2rem;
 }
 
-.search-container {
+/* .search-container {
   max-width: 600px;
   margin: 0 auto;
   position: relative;
@@ -305,7 +305,63 @@ input:checked + .slider:before {
   top: 50%;
   transform: translateY(-50%);
   color: #666;
+} */
+
+/* ... (mantén todo lo anterior) ... */
+
+/* Mejoras al buscador */
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  position: relative;
+  width: 90%;
 }
+
+.search-container input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 3rem;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+  outline: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+.search-container i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 576px) {
+  .search-container {
+    width: 95%;
+    margin: 0 auto 1.5rem;
+  }
+
+  .search-container input {
+    padding: 0.7rem 1rem 0.7rem 2.8rem;
+    font-size: 0.9rem;
+  }
+
+  .search-container i {
+    left: 0.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* ... (mantén el resto del CSS) ... */
 
 /* Color de número de candidato por poder */
 .poder-judicial .list-number {

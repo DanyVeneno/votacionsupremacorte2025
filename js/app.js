@@ -329,17 +329,47 @@ function setupNavbarToggle() {
   });
 }
 
-// Función para buscar candidatos por nombre
+// Función para buscar candidatos por nombre y apellidos
 function searchCandidates() {
   const searchInput = document.getElementById("search-input");
+
+  // Normalizar texto: quitar acentos y poner en minúsculas
+  const normalizeText = (text) => {
+    return text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  };
+
   searchInput.addEventListener("input", (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const filtered = candidates.filter(
-      (candidate) =>
-        candidate.NOMBRE_CANDIDATO.toLowerCase().includes(searchTerm) &&
-        candidate.ESTATUS === "Publicado"
-    );
+    const searchTerm = normalizeText(e.target.value.trim());
+
+    const filtered = candidates.filter((candidate) => {
+      if (candidate.ESTATUS !== "Publicado") return false;
+
+      if (!searchTerm) return true; // Mostrar todos si no hay búsqueda
+
+      const fullName = normalizeText(candidate.NOMBRE_CANDIDATO);
+
+      // Buscar coincidencias en nombre completo o partes separadas
+      const nameParts = fullName.split(" ");
+
+      // Coincidencia exacta en nombre completo
+      if (fullName.includes(searchTerm)) return true;
+
+      // Coincidencia con cualquier parte del nombre
+      return nameParts.some((part) => part.startsWith(searchTerm));
+    });
+
     renderCandidates(filtered);
+  });
+
+  // Mejorar accesibilidad
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      e.target.value = "";
+      renderCandidates();
+    }
   });
 }
 
